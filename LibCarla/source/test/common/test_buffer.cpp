@@ -18,7 +18,9 @@
 using namespace util::buffer;
 
 TEST(buffer, compile) {
+  // 创建一个 Buffer 对象
   carla::Buffer buffer;
+  // 测试从不同类型的容器中复制数据到 Buffer
   { std::array<boost::asio::const_buffer, 3u> s; buffer.copy_from(s); }
   { std::array<boost::asio::mutable_buffer, 3u> s; buffer.copy_from(s); }
   { std::vector<boost::asio::const_buffer> s; buffer.copy_from(s); }
@@ -28,6 +30,7 @@ TEST(buffer, compile) {
   { std::set<boost::asio::const_buffer> s; buffer.copy_from(s); }
   { std::set<boost::asio::mutable_buffer> s; buffer.copy_from(s); }
 
+   // 测试从单个缓冲区对象中复制数据到 Buffer
   { boost::asio::const_buffer v; buffer.copy_from(v); }
   { boost::asio::mutable_buffer v; buffer.copy_from(v); }
   { int v[3u]; buffer.copy_from(v); }
