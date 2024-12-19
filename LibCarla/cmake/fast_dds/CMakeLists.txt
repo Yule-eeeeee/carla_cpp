@@ -3,15 +3,21 @@ project(libcarla_fastdds)
 
 # Install headers.
 
+# 安装头文件
+# 使用file(GLOB)命令收集指定路径下的所有.h文件
 file(GLOB libcarla_carla_fastdds_headers
   "${libcarla_source_path}/carla/ros2/publishers/*.h"
   "${libcarla_source_path}/carla/ros2/subscribers/*.h"
   "${libcarla_source_path}/carla/ros2/listeners/*.h"
   "${libcarla_source_path}/carla/ros2/types/*.h"
   )
+  # 将收集到的头文件安装到指定目录下
 install(FILES ${libcarla_carla_fastdds_headers} DESTINATION include/carla/ros2)
 
+# 收集Fast DDS库文件
+# 使用file(GLOB)命令收集指定路径下的所有.so文件（动态链接库）
 file(GLOB fast_dds_dependencies "${FASTDDS_LIB_PATH}/*.so*")
+# 将收集到的Fast DDS库文件安装到指定目录下
 install(FILES ${fast_dds_dependencies} DESTINATION lib)
 
 
