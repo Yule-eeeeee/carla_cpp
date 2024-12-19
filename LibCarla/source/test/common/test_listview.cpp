@@ -28,15 +28,25 @@ static void TestSequence(carla::ListView<Iterator> view) {
 }
 
 TEST(listview, sequence) {
+  // 定义一个整数数组，并初始化为 {0, 1, 2, 3, 4, 5}
   int array[] = {0, 1, 2, 3, 4, 5};
+  // 使用 MakeListView 创建视图，并传递给 TestSequence 进行测试
   TestSequence(MakeListView(array));
+  // 定义一个 std::array<int, 6> 类型的数组，并初始化为 {0, 1, 2, 3, 4, 5}
   std::array<int, 6u> std_array = {0, 1, 2, 3, 4, 5};
+  // 使用 MakeListView 创建视图，并传递给 TestSequence 进行测试
   TestSequence(MakeListView(std_array));
+  // 定义一个 std::vector<int> 类型的向量，并初始化为 {0, 1, 2, 3, 4, 5}
   std::vector<int> vector = {0, 1, 2, 3, 4, 5};
+  // 使用 MakeListView 创建视图，并传递给 TestSequence 进行测试
   TestSequence(MakeListView(vector));
+  // 定义一个 std::list<int> 类型的列表，并初始化为 {0, 1, 2, 3, 4, 5}
   std::list<int> list = {0, 1, 2, 3, 4, 5};
+  // 使用 MakeListView 创建视图，并传递给 TestSequence 进行测试
   TestSequence(MakeListView(list));
+  // 定义一个 std::set<int> 类型的集合，并初始化为 {0, 1, 2, 3, 4, 5}
   std::set<int> set = {0, 1, 2, 3, 4, 5};
+  // 使用 MakeListView 创建视图，并传递给 TestSequence 进行测试
   TestSequence(MakeListView(set));
 }
 
