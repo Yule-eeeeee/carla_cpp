@@ -14,7 +14,9 @@
 namespace carla {
 
   void throw_exception(const std::exception &e) {
+    # 打印错误信息
     log_critical("carla::throw_exception:", e.what());
+    # 提示异常处理已禁用，并调用终止函数
     log_critical("calling std::terminate because exceptions are disabled.");
     std::terminate();
   }
