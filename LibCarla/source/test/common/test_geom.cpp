@@ -26,18 +26,28 @@ namespace geom {
 using namespace carla::geom;
 
 TEST(geom, single_point_no_transform) {
+  // 定义一个非常小的误差范围，用于比较浮点数
   constexpr double error = 0.001;
 
+  // 创建一个位置对象，表示没有平移
   Location translation (0.0, 0.0, 0.0);
+  // 创建一个旋转对象，表示没有旋转
   Rotation rotation(0.0, 0.0, 0.0);
+  // 创建一个变换对象，结合上述的平移和旋转
   Transform transform (translation, rotation);
 
+  // 创建一个点对象，坐标为 (1.0, 1.0, 1.0)
   Location point (1.0,1.0,1.0);
+  // 使用 Transform 对象对点进行变换
   transform.TransformPoint(point);
+  // 创建一个结果点对象，预期坐标为 (1.0, 1.0, 1.0)，因为没有变换
   Location result_point(1.0, 1.0, 1.0);
 
+  // 断言：检查变换后的点与预期点在 x 轴上的值是否接近
   ASSERT_NEAR(point.x, result_point.x, error);
+  // 断言：检查变换后的点与预期点在 y 轴上的值是否接近
   ASSERT_NEAR(point.y, result_point.y, error);
+  // 断言：检查变换后的点与预期点在 z 轴上的值是否接近
   ASSERT_NEAR(point.z, result_point.z, error);
 
 }
