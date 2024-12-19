@@ -2,11 +2,16 @@ cmake_minimum_required(VERSION 3.5.1)
 project(libcarla-server)
 
 # Install libc++ shared libraries.
+# 安装libc++共享库
+# 使用file(GLOB)命令收集指定路径下的所有libc++库文件
 file(GLOB LibCXX_Libraries "${LLVM_LIB_PATH}/libc++*")
 install(FILES ${LibCXX_Libraries} DESTINATION lib)
 
+# 安装RPCLib
+# 安装RPCLib的头文件到include目录
 # Install rpclib.
 install(DIRECTORY "${RPCLIB_INCLUDE_PATH}/rpc" DESTINATION include)
+# 使用file(GLOB)命令收集指定路径下的所有CARLA头文件
 file(GLOB libcarla_carla_rpclib "${RPCLIB_LIB_PATH}/*.*")
 install(FILES ${libcarla_carla_rpclib} DESTINATION lib)
 
@@ -14,6 +19,7 @@ install(FILES ${libcarla_carla_rpclib} DESTINATION lib)
 
 install(DIRECTORY "${libcarla_source_path}/compiler" DESTINATION include)
 
+# 使用file(GLOB)命令收集指定路径下的所有CARLA几何头文件
 file(GLOB libcarla_carla_headers "${libcarla_source_path}/carla/*.h")
 install(FILES ${libcarla_carla_headers} DESTINATION include/carla)
 
