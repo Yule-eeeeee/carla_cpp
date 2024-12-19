@@ -364,10 +364,13 @@ if (LIBCARLA_BUILD_DEBUG)
       "${RPCLIB_INCLUDE_PATH}"
       "${RECAST_INCLUDE_PATH}"
       "${LIBPNG_INCLUDE_PATH}")
-
+      
+# 这段代码检查是否启用了BUILD_RSS_VARIANT选项。如果启用，则为carla_client目标添加了宏定义RSS_ENABLED和RSS_USE_TBB
   if (BUILD_RSS_VARIANT)
     target_compile_definitions(carla_client${carla_target_postfix}_debug PRIVATE RSS_ENABLED RSS_USE_TBB)
+# 这里将tbb（Intel Threading Building Blocks）和其他由${ADRSS_LIBS}指定的库链接到carla_client目标。
     target_link_libraries(carla_client${carla_target_postfix}_debug ${ADRSS_LIBS} tbb)
+# 这段代码指定了在编译carla_client时需要包含的头文件目录。
     target_include_directories(carla_client${carla_target_postfix}_debug SYSTEM PRIVATE
       ${ADRSS_INCLUDE_DIRS})
   endif()
