@@ -1,16 +1,20 @@
+# 版权信息
 // Copyright (c) 2017 Computer Vision Center (CVC) at the Universitat Autonoma
 // de Barcelona (UAB).
 //
 // This work is licensed under the terms of the MIT license.
 // For a copy, see <https://opensource.org/licenses/MIT>.
 
+# 防止重复包含
 #pragma once
 
+# 包含头文件
 #include <carla/geom/Location.h>
 
 #include <algorithm>
 #include <random>
 
+# 命名空间和类定义
 namespace util {
 
   class Random {
